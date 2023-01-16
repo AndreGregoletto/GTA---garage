@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\BrandServices;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //  BRAND
+        $this->app->singleton('brandService', function(){
+            return new BrandServices();
+        });
     }
 }

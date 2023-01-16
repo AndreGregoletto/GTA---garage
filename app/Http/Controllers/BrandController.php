@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Brand\RequestCreate;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
@@ -13,7 +14,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        return view('brand.index');
+        return view('brand.index', ['aData' => app('brandService')->index()]);
     }
 
     /**
@@ -26,13 +27,7 @@ class BrandController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(RequestCreate $request)
     {
         //
     }
