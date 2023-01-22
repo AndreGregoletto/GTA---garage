@@ -22,4 +22,12 @@ Route::get('teste', function(){
     return view('teste');
 });
 
-Route::resource('brand', BrandController::class);
+// Route::resource('brand', BrandController::class);
+
+Route::controller(BrandController::class)->prefix('brand')->group(function(){
+    Route::get('index', 'index')->name('brandIndex');
+
+    Route::post('store', 'store')->name('brandStore');
+
+    Route::post('destroy', 'destroy')->name('brandDestroy');
+});

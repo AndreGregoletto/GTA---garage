@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Brand\RequestCreate;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
@@ -24,12 +25,18 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('brand.create');
     }
 
-    public function store(RequestCreate $request)
+    public function store()
     {
-        //
+        $postAjax = [
+            'name'   => $_POST['name'],
+            'status' => $_POST['status']
+        ];
+
+        app('brandService')->store($postAjax);
+        return $this->show();
     }
 
     /**
@@ -38,9 +45,10 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $response = Brand::get();
+        return response()->json($response);
     }
 
     /**
@@ -72,8 +80,9 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        Brand::whereId($_POST['id'])->delete();
+        return $this->show();
     }
 }

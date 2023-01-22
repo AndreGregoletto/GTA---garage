@@ -10,4 +10,9 @@ class BrandServices
     {
         return Brand::get();
     }
+
+    public function store($request)
+    {
+        Brand::create($request);
+    }
 }
