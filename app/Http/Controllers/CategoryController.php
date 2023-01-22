@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -13,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('category.index', ['aData' => app('categoryService')->index()]);
     }
 
     /**
@@ -32,9 +33,10 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        app('categoryService')->store();
+        return $this->show();
     }
 
     /**
@@ -43,9 +45,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $response = Category::get();
+        return response()->json($response);
     }
 
     /**
@@ -66,9 +69,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updated()
     {
-        //
+        app('categoryService')->updated();
+        return $this->show();
     }
 
     /**
@@ -77,8 +81,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        Category::whereId($_POST['id'])->delete();
+        return $this->show();
     }
 }

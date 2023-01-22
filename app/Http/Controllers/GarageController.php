@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Garage;
 
 class GarageController extends Controller
 {
@@ -13,7 +13,7 @@ class GarageController extends Controller
      */
     public function index()
     {
-        //
+        return view('garage.index', ['aData' => app('garageService')->index()]);
     }
 
     /**
@@ -32,9 +32,10 @@ class GarageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        app('garageService')->store();
+        return $this->show();
     }
 
     /**
@@ -43,9 +44,10 @@ class GarageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $response = Garage::get();
+        return response()->json($response);
     }
 
     /**
@@ -66,9 +68,10 @@ class GarageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updated()
     {
-        //
+        app('garageService')->updated();
+        return $this->show();
     }
 
     /**
@@ -77,8 +80,9 @@ class GarageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        Garage::whereId($_POST['id'])->delete();
+        return $this->show();
     }
 }

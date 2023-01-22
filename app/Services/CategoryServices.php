@@ -2,13 +2,13 @@
 
 namespace App\Services;
 
-use App\Models\Brand;
+use App\Models\Category;
 
-class BrandServices
+class CategoryServices
 {
     public function index()
     {
-        return Brand::get();
+        return Category::get();
     }
 
     public function store()
@@ -18,7 +18,7 @@ class BrandServices
             'status' => $_POST['status']
         ];
 
-        Brand::create($postAjax);
+        Category::create($postAjax);
     }
 
     public function updated()
@@ -29,6 +29,7 @@ class BrandServices
             'status' => $_POST['status']
         ];
         
-        Brand::whereId($oData['id'])->update($oData);
+        Category::whereId($oData['id'])->update($oData);
     }
+
 }

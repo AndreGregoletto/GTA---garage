@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Brand\RequestCreate;
 use App\Models\Brand;
-use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
@@ -25,17 +23,12 @@ class BrandController extends Controller
      */
     public function create()
     {
-        return view('brand.create');
+        // return view('brand.create');
     }
 
     public function store()
     {
-        $postAjax = [
-            'name'   => $_POST['name'],
-            'status' => $_POST['status']
-        ];
-
-        app('brandService')->store($postAjax);
+        app('brandService')->store();
         return $this->show();
     }
 
@@ -69,9 +62,10 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updated()
     {
-        //
+        app('brandService')->updated();
+        return $this->show();
     }
 
     /**

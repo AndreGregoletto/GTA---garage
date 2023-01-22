@@ -13,11 +13,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                <a class="nav-link text-primary" href="#">Garagem</a>
-                <a class="nav-link" href="#">Carros</a>
-                <a class="nav-link" href="#">Marcas</a>
-                <a class="nav-link" href="#">Categorias</a>
+                <a class="nav-link" aria-current="page" href="#">Home</a>
+                <a class="nav-link {{ Request::segment(1)  == 'garage'   ? 'text-primary text-bold' : '' }}" href="{{ route('garageIndex') }}">Garagem</a>
+                <a class="nav-link {{ Request::segment(1)  == 'car'      ? 'text-primary text-bold' : '' }}" href="#">Carros</a>
+                <a class="nav-link {{ Request::segment(1)  == 'brand'    ? 'text-primary text-bold' : '' }}" href="{{ route('brandIndex') }}">Marcas</a>
+                <a class="nav-link {{ Request::segment(1)  == 'category' ? 'text-primary text-bold' : '' }}" href="{{ route('categoryIndex') }}">Categorias</a>
             </div>
         </div>
     </div>

@@ -1,19 +1,18 @@
 <x-layout>    
     <x-buttonCreate></x-buttonCreate>
-    <!-- Modal CRIAR -->
 
     <div class="modal fade" id="modalCreate" tabindex="-1" aria-labelledby="modalCreateLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalCreateLabel">Adicionar Marca</h5>
+                    <h5 class="modal-title" id="modalCreateLabel">Adicionar Categoria</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <form class="modal-body">
                     <div class="row">
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="ex: Bravado"  name="name" id="name" aria-label="Nome">
+                            <input type="text" class="form-control" placeholder="ex: OFF-ROAD"  name="name" id="name" aria-label="Nome">
                         </div>
                         <div class="col">
                             <select name="status" id="status" class="form-control">
@@ -79,11 +78,11 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="modalEditLabel">Editar Marca</h5>
+                                    <h5 class="modal-title" id="modalEditLabel">Editar Categoria</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                 
-                                <form class="modal-body">
+                                <div class="modal-body">
                                     <div class="row">
                                         <div class="col">
                                             <input type="text" class="form-control" placeholder="{{ $data['name'] }}" value="{{ $data['name'] }}" name="nameEdit" id="nameEdit-{{ $data['id'] }}" aria-label="Nome">
@@ -95,7 +94,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
                 
                                 <div class="modal-footer">
                                     <button type="button" id="add" class="btn btn-success" onclick="edit({{ $data['id'] }})" aria-label="Close">Editar</button>
@@ -125,7 +124,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 type:'POST',
-                url:`${baseUrl}/brand/store`,
+                url:`${baseUrl}/category/store`,
                 async:true,
                 dataType:'json',
                 data:{
@@ -148,7 +147,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 type:'POST',
-                url:`${baseUrl}/brand/updated`,
+                url:`${baseUrl}/category/updated`,
                 async:true,
                 dataType:'json',
                 data:{
@@ -168,7 +167,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 type:'POST',
-                url:`${baseUrl}/brand/destroy`,
+                url:`${baseUrl}/category/destroy`,
                 async:true,
                 dataType:'json',
                 data:{
