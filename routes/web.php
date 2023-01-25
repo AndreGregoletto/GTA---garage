@@ -25,6 +25,10 @@ Route::get('teste', function(){
     return view('teste');
 });
 
+Route::get('home', function(){
+    return view('home.index');
+})->name('home');
+
 Route::controller(BrandController::class)->prefix('brand')->group(function(){
     Route::get('index', 'index')->name('brandIndex');
 
