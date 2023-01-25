@@ -9,10 +9,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form class="modal-body">
+                <div class="modal-body">
                     <div class="row">
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="ex: OFF-ROAD"  name="name" id="name" aria-label="Nome">
+                            <input type="text" class="form-control" placeholder="ex: Garagem Executiva"  name="name" id="name" aria-label="Nome">
                         </div>
                         <div class="col">
                             <input type="number" class="form-control" placeholder="ex: 10"  name="parking" id="parking" aria-label="Nome">
@@ -24,7 +24,7 @@
                             </select>
                         </div>
                     </div>
-                </form>
+                </div>
 
                 <div class="modal-footer">
                     <button type="button" id="add" class="btn btn-success" onclick="add()" aria-label="Close">Adicionar</button>
@@ -78,7 +78,7 @@
                             </svg>
                         </a>
                     </td>
-                            <!-- Modal EDITAR -->
+                    <!-- Modal EDITAR -->
                     <div class="modal fade" id="modalEdit{{$data['id']}}" tabindex="-1" aria-labelledby="modalEditLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -92,7 +92,7 @@
                                         <div class="col">
                                             <input type="text" class="form-control" placeholder="{{ $data['name'] }}" value="{{ $data['name'] }}" name="nameEdit" id="nameEdit-{{ $data['id'] }}" aria-label="Nome">
                                         </div>
-                                        <div class="co">
+                                        <div class="col">
                                             <input type="number" class="form-control" placeholder="{{ $data['parking'] }}" value="{{ $data['parking'] }}" name="parkingEdit" id="parkingEdit-{{ $data['id'] }}" aria-label="Nome">
                                         </div>
                                         <div class="col">
@@ -244,7 +244,7 @@
                                             <div class="col">
                                                 <input type="text" class="form-control" placeholder="${data['id']}" value="${data['name']}" name="nameEdit" id="nameEdit-${data['id']}" aria-label="Nome">
                                             </div>
-                                            <div class="co">
+                                            <div class="col">
                                                 <input type="number" class="form-control" placeholder="${data['parking']}" value="${data['parking']}" name="parkingEdit" id="parkingEdit-${data['id']}" aria-label="Nome">
                                             </div>
                                             <div class="col">

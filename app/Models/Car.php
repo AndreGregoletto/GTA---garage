@@ -14,8 +14,7 @@ class Car extends Model
         'category_id',
         'brand_id',
         'convertible',
-        'status',
-        'garage_id'
+        'status'
     ];
 
     public function category()

@@ -20,7 +20,6 @@ return new class extends Migration
             $table->foreignId('brand_id')->constrained('brands', 'id');
             $table->boolean('convertible');
             $table->boolean('status');
-            $table->foreignId('garage_id')->constrained('garages', 'id');
             $table->timestamps();
         });
     }

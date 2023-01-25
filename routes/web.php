@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CarController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GarageController;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,16 @@ Route::controller(BrandController::class)->prefix('brand')->group(function(){
     Route::post('updated', 'updated')->name('brandUpdated');
 
     Route::post('destroy', 'destroy')->name('brandDestroy');
+});
+
+Route::controller(CarController::class)->prefix('car')->group(function(){
+    Route::get('index', 'index')->name('carIndex');
+
+    Route::post('store', 'store')->name('carStore');
+
+    Route::post('updated', 'updated')->name('carUpdated');
+
+    Route::post('destroy', 'destroy')->name('carDestroy');
 });
 
 Route::controller(CategoryController::class)->prefix('category')->group(function(){

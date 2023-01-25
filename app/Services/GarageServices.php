@@ -6,6 +6,16 @@ use App\Models\Garage;
 
 class GarageServices
 {
+    public function ajaxPost()
+    {
+        $response = [
+            'name'    => $_POST['name'],
+            'parking' => $_POST['parking'],
+            'status'  => $_POST['status']
+        ];
+        return $response;
+    }
+
     public function index()
     {
         return Garage::get();
@@ -13,25 +23,16 @@ class GarageServices
 
     public function store()
     {
-        $postAjax = [
-            'name'    => $_POST['name'],
-            'parking' => $_POST['parking'],
-            'status'  => $_POST['status']
-        ];
-
-        Garage::create($postAjax);
+        Garage::create($this->ajaxPost());
     }
 
     public function updated()
     {
-        $oData = [
-            'id'      => $_POST['id'],
-            'name'    => $_POST['name'],
-            'parking' => $_POST['parking'],
-            'status'  => $_POST['status']
-        ];
-        
-        Garage::whereId($oData['id'])->update($oData);
+        Garage::whereId($_POST['id'])->update($this->ajaxPost());
     }
 
+    public function destroy($id)
+    {
+        Garage::whereId($id)->delete();
+    }
 }

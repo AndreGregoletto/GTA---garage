@@ -6,6 +6,16 @@ use App\Models\Brand;
 
 class BrandServices
 {
+    public function ajaxPost()
+    {
+        $response = [
+            'name'   => $_POST['name'],
+            'status' => $_POST['status']
+        ];
+
+        return $response;
+    }
+
     public function index()
     {
         return Brand::get();
@@ -13,22 +23,16 @@ class BrandServices
 
     public function store()
     {
-        $postAjax = [
-            'name'   => $_POST['name'],
-            'status' => $_POST['status']
-        ];
-
-        Brand::create($postAjax);
+        Brand::create($this->ajaxPost());
     }
 
     public function updated()
     {
-        $oData = [
-            'id'     => $_POST['id'],
-            'name'   => $_POST['name'],
-            'status' => $_POST['status']
-        ];
-        
-        Brand::whereId($oData['id'])->update($oData);
+        Brand::whereId($_POST['id'])->update($this->ajaxPost());
+    }
+
+    public function destroy($id)
+    {
+        Brand::whereId($id)->delete();
     }
 }

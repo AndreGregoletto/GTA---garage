@@ -6,6 +6,16 @@ use App\Models\Category;
 
 class CategoryServices
 {
+    public function ajaxPost()
+    {
+        $response = [
+            'name'   => $_POST['name'],
+            'status' => $_POST['status']
+        ];
+
+        return $response;
+    }
+
     public function index()
     {
         return Category::get();
@@ -13,23 +23,16 @@ class CategoryServices
 
     public function store()
     {
-        $postAjax = [
-            'name'   => $_POST['name'],
-            'status' => $_POST['status']
-        ];
-
-        Category::create($postAjax);
+        Category::create($this->ajaxPost());
     }
 
     public function updated()
     {
-        $oData = [
-            'id'     => $_POST['id'],
-            'name'   => $_POST['name'],
-            'status' => $_POST['status']
-        ];
-        
-        Category::whereId($oData['id'])->update($oData);
+        Category::whereId($_POST['id'])->update($this->ajaxPost());
     }
 
+    public function destroy($id)
+    {
+        Category::whereId($id)->delete();
+    }
 }

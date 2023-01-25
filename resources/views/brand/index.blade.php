@@ -83,7 +83,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                 
-                                <form class="modal-body">
+                                <div class="modal-body">
                                     <div class="row">
                                         <div class="col">
                                             <input type="text" class="form-control" placeholder="{{ $data['name'] }}" value="{{ $data['name'] }}" name="nameEdit" id="nameEdit-{{ $data['id'] }}" aria-label="Nome">
@@ -95,7 +95,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
                 
                                 <div class="modal-footer">
                                     <button type="button" id="add" class="btn btn-success" onclick="edit({{ $data['id'] }})" aria-label="Close">Editar</button>
