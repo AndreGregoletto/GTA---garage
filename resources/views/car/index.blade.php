@@ -78,8 +78,8 @@
                 <tr>
                     <th class="text-center" scope="row">{{ $data['id'] }}</th>
                     <td class="text-center">{{ $data['name'] }}</td>
-                    <td class="text-center">{{ $data->category['name'] }}</td>
-                    <td class="text-center">{{ $data->brand['name'] }}</td>
+                    <td class="text-center">{{ isset($data->category['name']) ? $data->category['name'] : 'SEM CATEGORIA' }}</td>
+                    <td class="text-center">{{ isset($data->brand['name']) ? $data->brand['name'] : 'SEM MARCA' }}</td>
                     <td class="text-center {{ $data['convertible'] == 1 ? 'text-success' : 'text-danger' }}">{{ $data['convertible'] == 1 ? 'Sim'   : 'Não' }}</td>
                     <td class="text-center {{ $data['status']      == 1 ? 'text-success' : 'text-danger' }}">{{ $data['status']      == 1 ? 'Ativo' : 'Inativo' }}</td>
                     <td class="text-center">

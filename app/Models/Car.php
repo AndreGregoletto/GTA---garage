@@ -14,6 +14,7 @@ class Car extends Model
         'category_id',
         'brand_id',
         'convertible',
+        'price',
         'status'
     ];
 
