@@ -63,7 +63,6 @@
         </div>
     </div>
     
-    <a href="#" class="btn-primary" onclick="ajaxPaginate(11, 20)">PRÓXIMO</a>
     <table class="table table-dark table-striped table-hover mt-3">
         <thead>
             <tr>
