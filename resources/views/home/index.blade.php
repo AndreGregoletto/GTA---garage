@@ -1,4 +1,4 @@
-<x-layout>    
+<x-layout>
     <div class="row">
         <div class="col">
             <div class="card text-white mb-3" style="max-width: 18rem; background-color:#000000">

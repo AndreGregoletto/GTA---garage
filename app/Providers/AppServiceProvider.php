@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\AuthServices;
 use App\Services\CarServices;
 use App\Services\BrandServices;
 use App\Services\GarageServices;
@@ -10,23 +11,18 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
     public function register()
     {
         //
     }
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
     public function boot()
     {
+        //  Auth
+        $this->app->singleton('authService', function(){
+            return new AuthServices();
+        });
+
         //  BRAND
         $this->app->singleton('brandService', function(){
             return new BrandServices();
