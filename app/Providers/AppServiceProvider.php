@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use App\Services\AuthServices;
 use App\Services\CarServices;
+use App\Services\AuthServices;
+use App\Services\HomeServices;
 use App\Services\BrandServices;
 use App\Services\GarageServices;
 use App\Services\CategoryServices;
@@ -41,6 +42,11 @@ class AppServiceProvider extends ServiceProvider
         //  GARAGE
         $this->app->singleton('garageService', function(){
             return new GarageServices();
+        });
+
+        //  HOME
+        $this->app->singleton('homeService', function(){
+            return new HomeServices();
         });
 
     }
