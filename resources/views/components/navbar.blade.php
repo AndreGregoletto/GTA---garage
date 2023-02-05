@@ -12,13 +12,26 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
+            <div class="navbar-nav me-auto p-2 bd-highlight">
                 <a class="nav-link {{ Request::segment(1)  == 'home'     ? 'text-primary text-bold' : '' }}" href="{{ route('home') }}">Home</a>
-                <a class="nav-link {{ Request::segment(1)  == 'car'      ? 'text-primary text-bold' : '' }}" href="{{ route('carIndex') }}">Carros</a>
-                <a class="nav-link {{ Request::segment(1)  == 'category' ? 'text-primary text-bold' : '' }}" href="{{ route('categoryIndex') }}">Categorias</a>
-                <a class="nav-link {{ Request::segment(1)  == 'garage'   ? 'text-primary text-bold' : '' }}" href="{{ route('garageIndex') }}">Garagem</a>
-                <a class="nav-link {{ Request::segment(1)  == 'brand'    ? 'text-primary text-bold' : '' }}" href="{{ route('brandIndex') }}">Marcas</a>
+                
+                @if (auth()->user()->admin == 1)
+                    <a class="nav-link {{ Request::segment(1)  == 'car'      ? 'text-primary text-bold' : '' }}" href="{{ route('carIndex') }}">Carros</a>
+                    <a class="nav-link {{ Request::segment(1)  == 'category' ? 'text-primary text-bold' : '' }}" href="{{ route('categoryIndex') }}">Categorias</a>
+                    <a class="nav-link {{ Request::segment(1)  == 'garage'   ? 'text-primary text-bold' : '' }}" href="{{ route('garageIndex') }}">Garagem</a>
+                    <a class="nav-link {{ Request::segment(1)  == 'brand'    ? 'text-primary text-bold' : '' }}" href="{{ route('brandIndex') }}">Marcas</a>
+                @endif
             </div>
+            <div class="text-white me-3"><b>{{ auth()->user()->name }}</b></div>
+            <form action="{{ route('destroyLogin') }}" method="GET">
+                @csrf
+                <button type="submit" class="btn btn-danger text-end bd-highlight">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-door-closed" viewBox="0 0 16 16">
+                        <path d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2zm1 13h8V2H4v13z"></path>
+                        <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"></path>
+                    </svg>
+                </button>
+            </form>
         </div>
     </div>
 </nav>

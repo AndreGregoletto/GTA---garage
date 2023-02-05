@@ -15,6 +15,9 @@
                         <div class="col">
                             <input type="text" class="form-control" placeholder="ex: NERO"  name="name" id="name" aria-label="Nome">
                         </div>         
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="ex: $1.200.000"  name="price" id="price" aria-label="Price">
+                        </div>         
                     </div>
                     <div class="row mt-3">
                         <div class="col">
@@ -60,7 +63,6 @@
         </div>
     </div>
     
-
     <table class="table table-dark table-striped table-hover mt-3">
         <thead>
             <tr>
@@ -68,6 +70,7 @@
                 <th scope="col" class="text-center">Nome</th>
                 <th scope="col" class="text-center">Categoria</th>
                 <th scope="col" class="text-center">Marca</th>
+                <th scope="col" class="text-center">Preço</th>
                 <th scope="col" class="text-center">Conversivel</th>
                 <th scope="col" class="text-center">Status</th>
                 <th scope="col" class="text-center" class="text-center">Ações</th>
@@ -78,8 +81,9 @@
                 <tr>
                     <th class="text-center" scope="row">{{ $data['id'] }}</th>
                     <td class="text-center">{{ $data['name'] }}</td>
-                    <td class="text-center">{{ $data->category['name'] }}</td>
-                    <td class="text-center">{{ $data->brand['name'] }}</td>
+                    <td class="text-center">{{ isset($data->category['name']) ? $data->category['name'] : 'SEM CATEGORIA' }}</td>
+                    <td class="text-center">{{ isset($data->brand['name']) ? $data->brand['name'] : 'SEM MARCA' }}</td>
+                    <td class="text-center">{{ $data['price'] }}</td>
                     <td class="text-center {{ $data['convertible'] == 1 ? 'text-success' : 'text-danger' }}">{{ $data['convertible'] == 1 ? 'Sim'   : 'Não' }}</td>
                     <td class="text-center {{ $data['status']      == 1 ? 'text-success' : 'text-danger' }}">{{ $data['status']      == 1 ? 'Ativo' : 'Inativo' }}</td>
                     <td class="text-center">
@@ -122,6 +126,9 @@
                                         <div class="row">
                                             <div class="col">
                                                 <input type="text" class="form-control" placeholder="{{ $data['name'] }}" value="{{ $data['name'] }}" name="nameEdit" id="nameEdit-{{ $data['id'] }}" aria-label="Nome">
+                                            </div>         
+                                            <div class="col">
+                                                <input type="text" class="form-control" placeholder="ex: $1.200.000" value="{{ $data['price'] }}" name="priceEdit" id="priceEdit" aria-label="Price">
                                             </div>         
                                         </div>
                                         <div class="row mt-3">
@@ -174,15 +181,15 @@
     <script>
         const baseUrl   = window.location.origin
         const container = document.getElementById('content')
-    
         function add(){
             let name        = $('#name').val()
-            let category_id = $('#category_id option:selected').val()
-            let brand_id    = $('#brand_id    option:selected').val()
-            let convertible = $('#convertible option:selected').val()
+            let price       = $('#price').val()
             let status      = $('#status      option:selected').val()
+            let brand_id    = $('#brand_id    option:selected').val()
+            let category_id = $('#category_id option:selected').val()
+            let convertible = $('#convertible option:selected').val()
 
-            if(name == "" || category_id == "" || brand_id == "" || convertible == "" || status == ""){
+            if(name == "" || category_id == "" || brand_id == "" || convertible == "" || status == "" || price == ""){
                 return false
             }
             
@@ -196,6 +203,7 @@
                 dataType:'json',
                 data:{
                     name:name,
+                    price:price,
                     category_id:category_id,
                     brand_id:brand_id,
                     convertible:convertible,
@@ -210,10 +218,11 @@
         
         function edit(id){
             let name        = $(`#nameEdit-${id}`).val()
-            let category_id = $(`#categoryEdit-${id}    option:selected`).val()
+            let priceEdit   = $(`#priceEdit-${id}`).val()
             let brand_id    = $(`#brandEdit-${id}       option:selected`).val()
-            let convertible = $(`#convertibleEdit-${id} option:selected`).val()
             let status      = $(`#statusEdit-${id}      option:selected`).val()
+            let category_id = $(`#categoryEdit-${id}    option:selected`).val()
+            let convertible = $(`#convertibleEdit-${id} option:selected`).val()
 
             $.ajax({
                 headers:{
@@ -226,6 +235,7 @@
                 data:{
                     id:id,
                     name:name,
+                    price:priceEdit,
                     category_id:category_id,
                     brand_id:brand_id,
                     convertible:convertible,
@@ -274,6 +284,7 @@
                         <td class="text-center">${data['name']}</td>
                         <td class="text-center">${data['category']['name']}</td>
                         <td class="text-center">${data['brand']['name']}</td>
+                        <td class="text-center"${data['price']}</td>
                         <td class="text-center ${convStatus}"> ${convertible} </td>
                         <td class="text-center ${statuStatus}">${status}</td>
                         <td class="text-center">
