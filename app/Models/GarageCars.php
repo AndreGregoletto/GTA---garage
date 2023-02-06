@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserCarGarage extends Model
+class GarageCars extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'user_id',
-        'car_id',
-        'garage_id'
+        'user_car_id',
+        'user_garage_id'
     ];
 
     public function users()
@@ -20,13 +20,13 @@ class UserCarGarage extends Model
         return $this->hasMany(User::class, 'id', 'user_id');
     }
 
-    public function cars()
+    public function userCars()
     {
-        return $this->hasMany(Car::class, 'id', 'car_id');
+        return $this->hasMany(UserCars::class, 'car_id', 'user_car_id');
     }
 
-    public function garages()
+    public function userGarages()
     {
-        return $this->hasMany(Garage::class, 'id', 'garage_id');
+        return $this->hasMany(UserGarage::class, 'garage_id', 'user_garage_id');
     }
 }

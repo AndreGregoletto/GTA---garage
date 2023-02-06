@@ -8,4 +8,14 @@ class HomeController extends Controller
     {
         return view('home.index', ['datas' => app('homeService')->allData()]);
     }
+
+    public function addCar()
+    {
+        return view('home.addCar', ['datas' => app('addCarService')->index()]);
+    }
+
+    public function addGarage()
+    {
+        return view('home.addGarage');
+    }
 }

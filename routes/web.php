@@ -2,11 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\GarageController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\HomeController;
 
 Route::get('teste', function(){
     return view('teste');
@@ -29,7 +29,14 @@ Route::controller(AuthController::class)->prefix('auth')->group(function(){
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('home', [HomeController::class, 'index'])->name('home');
+    
+    Route::controller(HomeController::class)->group(function(){
+        Route::get('index', 'index')->name('home');
+
+        Route::get('addCar', 'addCar')->name('addCar');
+
+        Route::get('addGarage', 'addGarage')->name('addGarage');
+    });
 
     Route::get('myGarage', function(){
         return view('home.myGarage');
