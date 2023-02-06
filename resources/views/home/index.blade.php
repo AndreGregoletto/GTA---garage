@@ -11,7 +11,7 @@
                             </svg>
                         </div>
                         <div class="col align-self-center">
-                            <p class="card-text fs-4 text-center">87 / 350</p>
+                            <p class="card-text fs-4 text-center">{{ $datas['car'] }} / {{ $datas['allCar'] }}</p>
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                             </svg>
                         </div>
                         <div class="col align-self-center">
-                            <p class="card-text fs-4 text-center">3 / 20</p>
+                            <p class="card-text fs-4 text-center">{{ $datas['brand'] }} / {{ $datas['allBrand'] }}</p>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                             </svg>
                         </div>
                         <div class="col align-self-center">
-                            <p class="card-text fs-4 text-center">7 / 15</p>
+                            <p class="card-text fs-4 text-center">{{ $datas['category'] }} / {{ $datas['allCategory'] }}</p>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                             </svg>
                         </div>
                         <div class="col align-self-center">
-                            <p class="card-text fs-4 text-center">15 / 40</p>
+                            <p class="card-text fs-4 text-center">{{ $datas['garage'] }} / {{ $datas['allGarage'] }}</p>
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                             </svg>
                         </div>
                         <div class="col align-self-center">
-                            <p class="card-text fs-4 text-center">x80 Proto</p>
+                            <p class="card-text fs-5 text-center">{{ $datas['carPrice']['name'] }}</p>
                         </div>
                     </div>
                 </div>

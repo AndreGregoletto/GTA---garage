@@ -32,4 +32,5 @@ class Car extends Model
     {
         return $this->hasOne(Garage::class, 'id', 'garage_id');
     }
+
 }

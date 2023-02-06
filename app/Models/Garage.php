@@ -19,4 +19,5 @@ class Garage extends Model
     {
         return $this->hasMany('garage_id', 'id');
     }
+
 }

@@ -2,19 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\GarageController;
 use App\Http\Controllers\CategoryController;
 
-
 Route::get('teste', function(){
     return view('teste');
 });
-
-Route::get('home', function(){
-    return view('home.index');
-})->name('home');
 
 Route::get('/', function () {
     return view('auth.login');
@@ -33,6 +29,19 @@ Route::controller(AuthController::class)->prefix('auth')->group(function(){
 });
 
 Route::middleware(['auth'])->group(function () {
+    
+    Route::controller(HomeController::class)->group(function(){
+        Route::get('index', 'index')->name('home');
+
+        Route::get('addCar', 'addCar')->name('addCar');
+
+        Route::get('addGarage', 'addGarage')->name('addGarage');
+    });
+
+    Route::get('myGarage', function(){
+        return view('home.myGarage');
+    });
+
     Route::controller(BrandController::class)->prefix('brand')->group(function(){
         Route::get('index', 'index')->name('brandIndex');
     
@@ -72,4 +81,5 @@ Route::middleware(['auth'])->group(function () {
     
         Route::post('destroy', 'destroy')->name('garageDestroy');
     });
+
 });
