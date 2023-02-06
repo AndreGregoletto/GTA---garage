@@ -19,4 +19,9 @@ class Garage extends Model
     {
         return $this->hasMany('garage_id', 'id');
     }
+
+    public function garagesPivot()
+    {
+        return $this->hasMany(UserCarGarage::class, 'garage_id', 'id');
+    }
 }

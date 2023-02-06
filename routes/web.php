@@ -31,6 +31,10 @@ Route::controller(AuthController::class)->prefix('auth')->group(function(){
 Route::middleware(['auth'])->group(function () {
     Route::get('home', [HomeController::class, 'index'])->name('home');
 
+    Route::get('myGarage', function(){
+        return view('home.myGarage');
+    });
+
     Route::controller(BrandController::class)->prefix('brand')->group(function(){
         Route::get('index', 'index')->name('brandIndex');
     
