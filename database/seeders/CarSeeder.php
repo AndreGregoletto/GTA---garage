@@ -1407,8 +1407,8 @@ class CarSeeder extends Seeder
 
         Car::create([
             'name'        => 'ONIBUS DE FESTA',
-            'category_id' => NULL,            
-            'brand_id'    => NULL,
+            'category_id' => $categoryId[19]['id'],            
+            'brand_id'    => $brandId[65]['id'],
             'convertible' => 0,
             'price'       => 1385000,
             'status'      => 1
@@ -1894,7 +1894,7 @@ class CarSeeder extends Seeder
         Car::create([
             'name'        => 'RC BANDITO',
             'category_id' => $categoryId[19]['id'],            
-            'brand_id'    => null,
+            'brand_id'    => $brandId[65]['id'],
             'convertible' => 0,
             'price'       => 1590000,
             'status'      => 1
