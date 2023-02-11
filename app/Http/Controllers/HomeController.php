@@ -11,11 +11,22 @@ class HomeController extends Controller
 
     public function addCar()
     {
-        return view('home.addCar', ['datas' => app('addCarService')->index()]);
+        return view('home.addCar');
+    }
+
+    public function addCarAjax()
+    {
+        return app('addCarService')->index();
+    }
+
+    public function comboBrandCategor()
+    {
+        return app('addCarService')->comboBrandCategor();
     }
 
     public function addGarage()
     {
         return view('home.addGarage');
     }
+
 }

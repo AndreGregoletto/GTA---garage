@@ -338,5 +338,10 @@ class BrandSeeder extends Seeder
             'name'   => 'LCC',
             'status' => 1
         ]);
+
+        Brand::create([
+            'name'   => 'ESPECIAL',
+            'status' => 1
+        ]);
     }
 }

@@ -109,7 +109,7 @@ class CategorySeeder extends Seeder
         ]);
 
         Category::create([
-            'name'  => 'Especialm',
+            'name'   => 'Especial',
             'status' => 1
         ]);
     }

@@ -36,6 +36,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('addCar', 'addCar')->name('addCar');
 
         Route::get('addGarage', 'addGarage')->name('addGarage');
+        
+        Route::post('addCarAjax', 'addCarAjax')->name('addCarAjax');
+        
+        Route::get('comboBrandCategor', 'comboBrandCategor')->name('comboBrandCategor');
     });
 
     Route::get('myGarage', function(){
