@@ -35,11 +35,18 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('addCar', 'addCar')->name('addCar');
 
-        Route::get('addGarage', 'addGarage')->name('addGarage');
+        Route::post('addCarUser', 'addCarUser')->name('addCarUser');
         
         Route::post('addCarAjax', 'addCarAjax')->name('addCarAjax');
         
         Route::get('comboBrandCategor', 'comboBrandCategor')->name('comboBrandCategor');
+
+        
+        Route::get('addGarage', 'addGarage')->name('addGarage');
+
+        Route::post('addGarageAjax', 'addGarageAjax')->name('addGarageAjax');
+
+        Route::post('addGarageAjaxView', 'addGarageAjaxView')->name('addGarageAjaxView');
     });
 
     Route::get('myGarage', function(){
