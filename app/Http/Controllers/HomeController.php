@@ -24,9 +24,23 @@ class HomeController extends Controller
         return app('addCarService')->comboBrandCategor();
     }
 
+    public function addCarUser()
+    {
+        return app('addCarService')->addCar($_POST['id']);
+    }
+
     public function addGarage()
     {
         return view('home.addGarage');
     }
 
+    public function addGarageAjaxView()
+    {
+        return app('addGarageService')->index();
+    }
+
+    public function addGarageAjax()
+    {
+        return app('addGarageService')->addGarage($_POST['id']);
+    }
 }

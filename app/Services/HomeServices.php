@@ -6,6 +6,8 @@ use App\Models\Car;
 use App\Models\Brand;
 use App\Models\Garage;
 use App\Models\Category;
+use App\Models\UserCars;
+use App\Models\UserGarage;
 
 class HomeServices
 {
@@ -16,7 +18,7 @@ class HomeServices
 
     public function countCar()
     {
-        return count(Car::get());
+        return count(UserCars::where('user_id', auth()->user()->id)->get());
     }
 
     public function allBrand()
@@ -46,7 +48,7 @@ class HomeServices
 
     public function garage()
     {
-        return count(Garage::get());
+        return count(UserGarage::where('user_id', auth()->user()->id)->get());
     }
 
     public function carCost()

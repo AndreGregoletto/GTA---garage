@@ -15,8 +15,8 @@ class AuthController extends Controller
 
     public function login(RequestLogin $request)
     {
-        // toastr()->success('WELCOME');
         if(Auth::attempt($request->validated())){
+            // toastr()->success('Bem-Vindo');
             return redirect()->route('home');
         }else{
             return back();

@@ -157,8 +157,24 @@
         }
 
         function addCar(id){
-            alert(id)
+            $.ajax({
+                headers:{
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type:'POST',
+                url:`${baseUrl}/addCarUser`,   
+                async:true,
+                dataType:'json',
+                data:{
+                    id:id
+                },
+                success: function(data){
+                    alert(data)
+                    // location.reload()
+                }
+            })
         }
+
     </script>
 </x-layout>
 <script>

@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Car;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\UserCars;
 
 class AddCarServices
 {
@@ -24,21 +25,21 @@ class AddCarServices
         return response()->json($response);
     }
 
-    function filter($cars, $pags, $response)
+    function filter($cars, $pags, $param)
     {
-        if(!empty($response['name'])){
-            $cars = $cars->where('name', 'LIKE', '%'.$response['name'].'%');
-            $pags = $pags->where('name', 'LIKE', '%'.$response['name'].'%');
+        if(!empty($param['name'])){
+            $cars = $cars->where('name', 'LIKE', '%'.$param['name'].'%');
+            $pags = $pags->where('name', 'LIKE', '%'.$param['name'].'%');
         }
 
-        if(!empty($response['category'])){
-            $cars = $cars->where('category_id', $response['category']);
-            $pags = $pags->where('category_id', $response['category']);
+        if(!empty($param['category'])){
+            $cars = $cars->where('category_id', $param['category']);
+            $pags = $pags->where('category_id', $param['category']);
         }
 
-        if(!empty($response['brand'])){
-            $cars = $cars->where('brand_id', $response['brand']);
-            $pags = $pags->where('brand_id', $response['brand']);
+        if(!empty($param['brand'])){
+            $cars = $cars->where('brand_id', $param['brand']);
+            $pags = $pags->where('brand_id', $param['brand']);
         }
 
         return $response = [
@@ -55,5 +56,19 @@ class AddCarServices
         ];
 
         return response()->json($data);
+    }
+
+    public function addCar($id)
+    {
+        $data = [
+            'user_id' => auth()->user()->id,
+            'car_id'  => $id
+        ];
+
+        UserCars::create($data);
+
+        $car = Car::whereId($id)->first();
+        // toastr()->success($car['name']." Adicionado com sucesso");
+        return response()->json(utf8_decode($car['name']." Adicionado com sucesso"), 200);
     }
 }
