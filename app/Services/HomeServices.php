@@ -13,47 +13,75 @@ class HomeServices
 {
     public function countAllCar()
     {
-        return count(Car::get());
+        return Car::whereStatus(1)->count();
     }
 
     public function countCar()
     {
-        return count(UserCars::where('user_id', auth()->user()->id)->get());
+        return UserCars::whereUserId(auth()->user()->id)->count();
     }
 
     public function allBrand()
     {
-        return count(Brand::get());
+        return Brand::whereStatus(1)->count();
     }
 
     public function brand()
     {
-        return count(Brand::get());
+        $cars    = UserCars::whereUserId(auth()->user()->id)->with('cars')->get();
+        $brandId = [];
+
+        foreach($cars as $car){
+            $brandId[] = $car['cars'][0]['brand_id'];
+        }
+
+        return count(array_unique($brandId));
     }
 
     public function allCategory()
     {
-        return count(Category::get());
+        return Category::whereStatus(1)->count();
     }
 
     public function category()
     {
-        return count(Category::get());
+        $cars       = UserCars::whereUserId(auth()->user()->id)->with('cars')->get();
+        $categoryId = [];
+
+        foreach($cars as $car){            
+            $categoryId[] = $car['cars'][0]['category_id'];
+        }
+
+        return count(array_unique($categoryId));
     }
 
     public function allGarage()
     {
-        return count(Garage::get());
+        return Garage::whereStatus(1)->count();
     }
 
     public function garage()
     {
-        return count(UserGarage::where('user_id', auth()->user()->id)->get());
+        return UserGarage::whereUserId(auth()->user()->id)->count();
     }
 
     public function carCost()
     {
-        return Car::orderByDesc('price')->first();
+        $cars = UserCars::whereUserId(auth()->user()->id)->with('cars')->get();
+        $data = [];
+
+        foreach($cars as $car){
+            $data[] = [
+                'id'    => $car['cars'][0]['id'],
+                'price' => $car['cars'][0]['price']
+            ];                      
+        }    
+
+        if($data){
+            return Car::whereId(max($data)['id'])->first();
+        }else{
+            return Car::orderBy('price')->first();
+        }
     }
 
     public function allData()
