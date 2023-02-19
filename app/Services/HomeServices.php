@@ -13,7 +13,7 @@ class HomeServices
 {
     public function countAllCar()
     {
-        return Car::count();
+        return Car::whereStatus(1)->count();
     }
 
     public function countCar()
@@ -23,7 +23,7 @@ class HomeServices
 
     public function allBrand()
     {
-        return Brand::count();
+        return Brand::whereStatus(1)->count();
     }
 
     public function brand()
@@ -40,7 +40,7 @@ class HomeServices
 
     public function allCategory()
     {
-        return Category::count();
+        return Category::whereStatus(1)->count();
     }
 
     public function category()
@@ -57,7 +57,7 @@ class HomeServices
 
     public function allGarage()
     {
-        return Garage::count();
+        return Garage::whereStatus(1)->count();
     }
 
     public function garage()

@@ -7,10 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\GarageController;
 use App\Http\Controllers\CategoryController;
-
-Route::get('teste', function(){
-    return view('teste');
-});
+use App\Http\Controllers\UserGarageController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -40,7 +37,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('addCarAjax', 'addCarAjax')->name('addCarAjax');
         
         Route::get('comboBrandCategor', 'comboBrandCategor')->name('comboBrandCategor');
-
         
         Route::get('addGarage', 'addGarage')->name('addGarage');
 
@@ -49,8 +45,9 @@ Route::middleware(['auth'])->group(function () {
         Route::post('addGarageAjaxView', 'addGarageAjaxView')->name('addGarageAjaxView');
     });
 
-    Route::get('myGarage', function(){
-        return view('home.myGarage');
+    Route::controller(UserGarageController::class)->prefix('myGarage')->group(function(){
+        Route::get('index', 'index')->name('myGarageIndex');
+
     });
 
     Route::controller(BrandController::class)->prefix('brand')->group(function(){

@@ -7,9 +7,10 @@ use App\Services\AuthServices;
 use App\Services\HomeServices;
 use App\Services\BrandServices;
 use App\Services\AddCarServices;
-use App\Services\AddGarageServices;
 use App\Services\GarageServices;
 use App\Services\CategoryServices;
+use App\Services\AddGarageServices;
+use App\Services\UserGarageServices;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -59,6 +60,11 @@ class AppServiceProvider extends ServiceProvider
         //  ADD_GARAGE
         $this->app->singleton('addGarageService', function(){
             return new AddGarageServices();
+        });
+
+        //  USER_GARAGE
+        $this->app->singleton('userGarageService', function(){
+            return new UserGarageServices();
         });
     }
 }

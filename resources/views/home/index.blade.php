@@ -58,21 +58,23 @@
         </div>
 
         <div class="col">
-            <div class="card text-white mb-3" style="max-width: 18rem; background-color:#081640">
-                <div class="card-header fs-2">Garagens</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-                                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
-                            </svg>
-                        </div>
-                        <div class="col align-self-center">
-                            <p class="card-text fs-4 text-center">{{ $datas['garage'] }} / {{ $datas['allGarage'] }}</p>
+            <a href="{{ route('myGarageIndex') }}"  style="text-decoration: none">
+                <div class="card text-white mb-3" style="max-width: 18rem; background-color:#081640">
+                    <div class="card-header fs-2">Garagens</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                                    <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
+                                </svg>
+                            </div>
+                            <div class="col align-self-center">
+                                <p class="card-text fs-4 text-center">{{ $datas['garage'] }} / {{ $datas['allGarage'] }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>      
     </div>
 
@@ -89,8 +91,8 @@
                             </svg>
                         </div>
                         <div class="col align-self-center">
-                            <p class="card-text fs-6 text-center">{{ $datas['carPrice']['name'] }}</p>
-                            <p class="card-text fs-6 text-center">{{ $datas['carPrice']['price'] }}</p>
+                            <p class="card-text text-center" style="font-size: 10pt;">{{ $datas['carPrice']['name'] }}</p>
+                            <p class="card-text text-center">${{ $datas['carPrice']['price'] }}</p>
                         </div>
                     </div>
                 </div>
