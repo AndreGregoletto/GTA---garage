@@ -11,4 +11,8 @@ class UserGarageController extends Controller
         return view('home.myGarage', ['response' => $response]);
     }
 
+    public function selectData()
+    {
+        return app('userGarageService')->comboSelect();
+    }
 }

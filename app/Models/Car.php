@@ -33,4 +33,9 @@ class Car extends Model
         return $this->hasOne(Garage::class, 'id', 'garage_id');
     }
 
+    public function userCarGarage()
+    {
+        return $this->hasMany(UsersCarsGarages::class, 'user_car_id', 'id');
+    }
+
 }

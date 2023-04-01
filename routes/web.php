@@ -48,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(UserGarageController::class)->prefix('myGarage')->group(function(){
         Route::get('index', 'index')->name('myGarageIndex');
 
+        Route::get('selectData', 'selectData')->name('myGarageSelectData');
     });
 
     Route::controller(BrandController::class)->prefix('brand')->group(function(){

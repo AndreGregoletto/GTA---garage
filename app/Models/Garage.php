@@ -20,4 +20,8 @@ class Garage extends Model
         return $this->hasMany('garage_id', 'id');
     }
 
+    public function userCarGarage()
+    {
+        return $this->hasMany(UsersCarsGarages::class, 'user_garage_id', 'id');
+    }
 }

@@ -26,7 +26,7 @@ class CarServices
         $response = [
             'brand'    => Brand::whereStatus(1)->get(),
             'category' => Category::whereStatus(1)->get(),
-            'car'      => Car::with(['category', 'brand', 'brand'])->get(),
+            'car'      => Car::whereStatus(1)->with(['category', 'brand', 'brand'])->get(),
         ];
 
         return $response;
